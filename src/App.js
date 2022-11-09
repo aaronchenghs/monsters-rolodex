@@ -2,57 +2,73 @@ import { Component } from 'react';
 import './App.css';
 import Cardlist from './components/card-list/card-list.component';
 import SearchBox from './components/search-box/search-box.component';
-class App extends Component {
-constructor()
+
+const App = () =>
 {
-  super();
 
-  this.state = 
-  {
-    monsters: [],
-    searchField: ''
-  };
+  return(    <div className="App">
+  <h1 className='app-title'>Monsters Rolodex!</h1>
+  {/* <SearchBox 
+    className = 'monsters-search-box'
+    onChangeHandler = {onSearchChange}
+    placeholder = 'search monsters'/>
+  
+  <Cardlist monsters = {filteredMonsters}/> */}
+</div>
+);
 }
+// class App extends Component {
+// constructor()
+// {
+//   super();
 
-  onSearchChange = (event) => 
-  {
-    const searchFieldValue = event.target.value.toLocaleLowerCase();
-    this.setState(() => {return {searchField: searchFieldValue};})
-  }
+//   this.state = 
+//   {
+//     monsters: [],
+//     searchField: ''
+//   };
+// }
 
-  componentDidMount()
-  {
-    fetch('https://jsonplaceholder.typicode.com/users')
-    .then((response) => response.json())
-    .then((users) => this.setState(() =>
-    {
-      return {monsters: users}
-    },
-      () =>
-      {console.log(this.state);}
-      ))
-  }
+//   onSearchChange = (event) => 
+//   {
+//     const searchFieldValue = event.target.value.toLocaleLowerCase();
+//     this.setState(() => {return {searchField: searchFieldValue};})
+//   }
 
-  render()
-  {
-    const { monsters, searchField } = this.state;
-    const { onSearchChange } = this;
+//   componentDidMount()
+//   {
+//     fetch('https://jsonplaceholder.typicode.com/users')
+//     .then((response) => response.json())
+//     .then((users) => this.setState(() =>
+//     {
+//       return {monsters: users}
+//     },
+//       () =>
+//       {console.log(this.state);}
+//       ))
+//   }
 
-    const filteredMonsters = monsters.filter((monster) => {
-      return monster.name.toLocaleLowerCase().includes(searchField);
-    })
+//   render()
+//   {
+//     const { monsters, searchField } = this.state;
+//     const { onSearchChange } = this;
 
-    return(
-    <div className="App">
-      <SearchBox 
-        className = 'search-box'
-        onChangeHandler = {onSearchChange}
-        placeholder = 'search monsters'/>
+//     const filteredMonsters = monsters.filter((monster) => {
+//       return monster.name.toLocaleLowerCase().includes(searchField);
+//     })
+
+//     return(
+//     <div className="App">
+//       <h1 className='app-title'>Monsters Rolodex!</h1>
+//       <SearchBox 
+//         className = 'monsters-search-box'
+//         onChangeHandler = {onSearchChange}
+//         placeholder = 'search monsters'/>
       
-      <Cardlist monsters = {filteredMonsters}/>
-    </div>
-    );
-  }
-}
+//       <Cardlist monsters = {filteredMonsters}/>
+//     </div>
+//     );
+//   }
+// }
 
 export default App;
